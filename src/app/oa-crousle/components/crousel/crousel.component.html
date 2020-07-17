@@ -1,8 +1,8 @@
-<div class="crousle-container" #crousleContainer>
+<div class="carousel-container" #carouselContainer>
   <ng-container>
-    <img class="crousle-item" [src]="images[index]" #crousleItem>
+    <img class="carousel-item" [src]="images[index]" #carouselItem>
   </ng-container>
-  <div class="crousle-controlers">
+  <div class="carousel-controlers">
     <div (click)="prev()">
       prev
     </div>
@@ -12,7 +12,7 @@
   </div>
   <div class="crousel-indicators">
     <span class="crousel-slide" (click)="index=i" [class.current-slide]="i===index"
-      *ngFor="let slide of crouselSliders;let i=index"></span>
+      *ngFor="let slide of carouselSliders;let i=index"></span>
   </div>
 
 </div>
