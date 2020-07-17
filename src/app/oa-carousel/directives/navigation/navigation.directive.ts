@@ -1,6 +1,6 @@
 import { Directive, ViewContainerRef, Injector, ComponentFactoryResolver, Input, ComponentRef, OnInit, ComponentFactory } from '@angular/core';
-import { NavigationTypes } from '../utils/enums/carousel-navigation';
-import { NavTemplatesComponent } from '../components/nav-templates/nav-templates.component';
+import { NavigationTypes } from '../../utils/enums/carousel-navigation';
+import { NavTemplatesComponent } from '../../components/nav-templates/nav-templates.component';
 
 @Directive({
   selector: '[oaNavigation]'

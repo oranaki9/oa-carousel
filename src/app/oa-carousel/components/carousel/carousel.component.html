@@ -1,11 +1,13 @@
 <div class="carousel-container" #carouselContainer>
-  <ng-container>
+  <ng-container >
     <img class="carousel-item" [src]="images[index]" #carouselItem>
   </ng-container>
 
- 
-      <ng-container *oaNavigation="'PRIMARY_ARROWS'">
-        </ng-container>
+ <!-- <ng-container *oaCarousel="let item of images">
+    <img class="carousel-item" [src]="item[index]" #carouselItem>
+  </ng-container> -->
+      <!-- <ng-container *oaNavigation="'WORDS'">
+        </ng-container> -->
         <div class="carousel-controllers">
             <div (click)="prev()">
                 prev
