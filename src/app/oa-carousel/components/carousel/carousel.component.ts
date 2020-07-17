@@ -1,15 +1,15 @@
-import { INITIAL_CAROUSEL_INTERVAL } from './../../utils';
+import { INITIAL_CAROUSEL_INTERVAL } from '../../utils';
 import { Component, OnInit, Input, OnDestroy, AfterViewInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { INITIAL_CAROUSEL_INDEX } from '../../utils';
 import { interval, Subject } from 'rxjs';
 import { takeWhile, takeUntil } from 'rxjs/operators';
 
 @Component({
-  selector: 'oa-crousel',
-  templateUrl: './crousel.component.html',
-  styleUrls: ['./crousel.component.less']
+  selector: 'oa-carousel',
+  templateUrl: './carousel.component.html',
+  styleUrls: ['./carousel.component.less']
 })
-export class CrouselComponent implements OnInit, OnDestroy, AfterViewInit {
+export class CarouselComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('carouselContainer', { static: true }) carouselContainer: ElementRef;
   @ViewChild('carouselItem', { static: true }) carouselItem: ElementRef;
   @Input() images: string[];
@@ -25,14 +25,14 @@ export class CrouselComponent implements OnInit, OnDestroy, AfterViewInit {
   private destroy: Subject<boolean> = new Subject<boolean>();
   constructor(private renderer: Renderer2) { }
   ngAfterViewInit(): void {
-    // Add your own custom class to the crousel wrapper.
+    // Add your own custom class to the carousel wrapper.
     if (this.containerClasses) {
       this.containerClasses.forEach(className => {
         this.renderer.addClass(this.carouselContainer.nativeElement, className);
       });
     }
     if (this.itemClasses) {
-      // Add your own custom class to the crousel item.
+      // Add your own custom class to the carousel item.
       this.itemClasses.forEach(className => {
         this.renderer.addClass(this.carouselItem.nativeElement, className);
       });

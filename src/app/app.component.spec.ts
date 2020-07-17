@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'oa-crousel'`, () => {
+  it(`should have as title 'oa-carousel'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('oa-crousel');
+    expect(app.title).toEqual('oa-carousel');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('oa-crousel app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('oa-carousel app is running!');
   });
 });
