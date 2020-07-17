@@ -2,15 +2,20 @@
   <ng-container>
     <img class="carousel-item" [src]="images[index]" #carouselItem>
   </ng-container>
-  <div class="carousel-controlers">
-    <div (click)="prev()">
-      prev
-    </div>
-    <div (click)="next()">
-      next
-    </div>
-  </div>
-  <div class="carousel-indicators">
+
+ 
+      <ng-container *oaNavigation="'PRIMARY_ARROWS'">
+        </ng-container>
+        <div class="carousel-controllers">
+            <div (click)="prev()">
+                prev
+              </div>
+              <div (click)="next()">
+                next
+              </div>
+        </div>
+
+  <div class="carousel-indicators" *ngIf="_slides">
     <span class="carousel-slide" (click)="index=i" [class.current-slide]="i===index"
       *ngFor="let slide of carouselSliders;let i=index"></span>
   </div>

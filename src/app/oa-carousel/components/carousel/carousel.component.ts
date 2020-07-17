@@ -20,8 +20,12 @@ export class CarouselComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() autoPlay: boolean;
   @Input() containerClasses: string[];
   @Input() itemClasses: string[];
-  carouselSliders: Array<number> = new Array(3);
+  @Input() set slides(action: boolean) {
+    this._slides = action !== undefined ? action : true;
+  }
+  carouselSliders: Array<number>;
   index: number;
+  _slides: boolean;
   private destroy: Subject<boolean> = new Subject<boolean>();
   constructor(private renderer: Renderer2) { }
   ngAfterViewInit(): void {
@@ -40,6 +44,8 @@ export class CarouselComponent implements OnInit, OnDestroy, AfterViewInit {
 
   }
   ngOnInit() {
+    this.carouselSliders = new Array(this.images.length);
+
     interval(this.interval ? this.interval : INITIAL_CAROUSEL_INTERVAL)
       .pipe(
         takeWhile(() => this.autoPlay),
