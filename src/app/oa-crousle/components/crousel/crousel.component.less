@@ -1,0 +1,52 @@
+:host {
+  display: block;
+
+  .crousle-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-wrap: nowrap;
+    overflow: hidden;
+
+
+    .crousle-item {
+      width: 100%;
+      height: 100%;
+      flex: 1 0 100%;
+    }
+
+    .crousle-controlers {
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .crousel-indicators {
+      width: 100%;
+      height: 10%;
+      display: flex;
+      position: absolute;
+      justify-content: center;
+      align-items: center;
+      bottom: 2%;
+
+      .crousel-slide {
+        background-color: rgba(255, 255, 255, 0.5);
+        height: 0.5rem;
+        width: 0.5rem;
+        border-radius: 50%;
+         margin: 1px;
+      }
+      .crousel-slide:hover{
+        cursor: pointer;
+      }
+
+      .current-slide {
+        background-color: rgba(255, 255, 255);
+      }
+    }
+  }
+}
