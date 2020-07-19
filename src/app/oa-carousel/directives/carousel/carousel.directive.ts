@@ -1,3 +1,4 @@
+import { INITIAL_CAROUSEL_INDEX } from './../../utils/utils';
 import { Directive, Input, OnInit } from '@angular/core';
 
 @Directive({
@@ -6,8 +7,12 @@ import { Directive, Input, OnInit } from '@angular/core';
 
 export class CarouselDirective implements OnInit {
   @Input('oaCarouselOf') items: string[];
+
+  index: number = INITIAL_CAROUSEL_INDEX;
   constructor() { }
   ngOnInit(): void {
-    console.log(this.items);
+
+    console.table(this.items);
+    console.log(this.index);
   }
 }

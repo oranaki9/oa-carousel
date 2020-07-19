@@ -1,19 +1,21 @@
-<ng-template #primaryArrowsNavigation>
-  <div class="carousel-controllers">
-    <div>
-      >
-    </div>
-    <div>
-      <
-    </div>
+<ng-template #primaryArrowsNavigation let-carousel>
+  <div class="primary-arrow-wrapper left">
+    <span class="material-icons slide" (click)="carousel.prev()">
+      chevron_left
+    </span>
+  </div>
+  <div class="primary-arrow-wrapper right">
+    <span class="material-icons slide" (click)="carousel.next()">
+      chevron_right
+    </span>
   </div>
 </ng-template>
-<ng-template #wordsNavigation>
+<ng-template #wordsNavigation let-carousel>
   <div class="carousel-controllers">
-    <div>
+    <div (click)="carousel.prev()">
       prev
     </div>
-    <div>
+    <div (click)="carousel.next()">
       next
     </div>
   </div>

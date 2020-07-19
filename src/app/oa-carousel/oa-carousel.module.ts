@@ -6,20 +6,22 @@ import { CommonModule } from '@angular/common';
 import { NavigationDirective } from './directives/navigation/navigation.directive';
 import { NavTemplatesComponent } from './components/nav-templates/nav-templates.component';
 import { CarouselDirective } from './directives/carousel/carousel.directive';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     CarouselComponent,
     NavigationDirective,
-    NavTemplatesComponent,
-    CarouselDirective 
+    CarouselDirective
   ],
   imports: [
     CommonModule,
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   exports: [CarouselComponent],
   providers: [],
-  entryComponents:[NavTemplatesComponent]
 })
 export class OaCarouselModule { }
