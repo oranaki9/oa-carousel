@@ -1,8 +1,9 @@
-import { INITIAL_CAROUSEL_INDEX } from './../../utils/utils';
-import { INITIAL_CAROUSEL_INTERVAL } from '../../utils/utils';
-import { Component, OnInit, Input, OnDestroy, AfterViewInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import { interval, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { INITIAL_CAROUSEL_INDEX, INITIAL_CAROUSEL_INTERVAL, CarouselTemplateContext, unsubscribe } from './../../utils/utils';
+import {
+  Component, OnInit, Input, OnDestroy, AfterViewInit, ViewChild,
+  ElementRef, Renderer2, ContentChild, TemplateRef, Output, EventEmitter
+} from '@angular/core';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'oa-carousel',
@@ -10,66 +11,70 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./carousel.component.less']
 })
 export class CarouselComponent implements OnInit, OnDestroy, AfterViewInit {
+  @Output() onNextClicked: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onPrevClicked: EventEmitter<number> = new EventEmitter<number>();
   @ViewChild('carouselContainer', { static: true }) carouselContainer: ElementRef;
   @ViewChild('carouselItem', { static: true }) carouselItem: ElementRef;
-  @Input() images: string[];
+  @Input() items: any[];
   @Input() interval: number;
   @Input() autoPlay: boolean;
   @Input() containerStyles: string[];
   @Input() itemStyles: string[];
-  @Input() set startAt(index: number) { this.index = index < 0 ? this.images.length + index : index; }
-  @Input() set slides(isSlidesOn: boolean) { this._slides = isSlidesOn; }
+  @Input() set startAt(index: number) { this.index = index < 0 ? this.items.length + index : index; }
+  @Input() set sliders(isSlidesOn: boolean) { this._sliders = isSlidesOn; }
+  @ContentChild(TemplateRef) customeCarouselTemplate: TemplateRef<CarouselTemplateContext>;
   carouselSliders: Array<number>;
   index: number = INITIAL_CAROUSEL_INDEX;
-  _slides: boolean = true;
-  private destroy: Subject<boolean> = new Subject<boolean>();
+  private _sliders: boolean = true;
+  private intervalSub: Subscription = new Subscription();
 
   constructor(private renderer: Renderer2) { }
 
   ngOnInit() {
-    this.carouselSliders = new Array(this.images.length);
+    this.carouselSliders = new Array(this.items.length);
     if (this.autoPlay) {
       this.startAutoPlay();
     }
   }
 
   ngAfterViewInit(): void {
+
     // Add your own custom class to the carousel wrapper.
     if (this.containerStyles) {
       this.addClassToElement(this.containerStyles, this.carouselContainer);
     }
     if (this.itemStyles) {
-      // Add your own custom class to the carousel item.
+    // Add your own custom class to the carousel item.
       this.addClassToElement(this.itemStyles, this.carouselItem);
     }
 
   }
 
   ngOnDestroy() {
-    this.destroy.next(true);
-    this.destroy.unsubscribe();
+    unsubscribe(this.intervalSub);
   }
 
   private startAutoPlay(): void {
-    interval(this.interval ? this.interval : INITIAL_CAROUSEL_INTERVAL)
-      .pipe(takeUntil(this.destroy))
+    this.intervalSub = interval(this.interval ? this.interval : INITIAL_CAROUSEL_INTERVAL)
       .subscribe((interval: number) => this.next());
+
   }
 
   next(): void {
     this.index++;
-    if (this.index === this.images.length) {
+    if (this.index === this.items.length) {
       this.index = INITIAL_CAROUSEL_INDEX;
     }
+    this.onNextClicked.emit(this.index);
 
   }
 
   prev(): void {
     this.index--;
     if (this.index < 0) {
-      this.index = this.images.length - 1;
+      this.index = this.items.length - 1;
     }
-
+    this.onPrevClicked.emit(this.index);
   }
 
   private addClassToElement(classes: string[], el: ElementRef) {
@@ -77,5 +82,7 @@ export class CarouselComponent implements OnInit, OnDestroy, AfterViewInit {
       this.renderer.addClass(el.nativeElement, className);
     });
   }
-
+  get slides(): boolean {
+    return this._sliders;
+  }
 }

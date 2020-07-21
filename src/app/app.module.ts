@@ -10,7 +10,8 @@ import { OaCarouselModule } from './oa-carousel/oa-carousel.module';
   ],
   imports: [
     BrowserModule,
-    OaCarouselModule
+    OaCarouselModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

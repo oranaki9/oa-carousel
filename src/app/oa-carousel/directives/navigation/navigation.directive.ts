@@ -1,6 +1,6 @@
+import { CarouselTemplatesComponent } from './../../components/carousel-templates/carousel-templates.component';
 import { Directive, ViewContainerRef, Injector, ComponentFactoryResolver, Input, ComponentRef, OnInit, ComponentFactory } from '@angular/core';
 import { NavigationTypes } from '../../utils/enums/carousel-navigation';
-import { NavTemplatesComponent } from '../../components/nav-templates/nav-templates.component';
 
 @Directive({
   selector: '[oaNavigation]'
@@ -18,7 +18,7 @@ export class NavigationDirective implements OnInit {
   }
   ngOnInit() {
     console.log(this.oaNavigation);
-    const cfr: ComponentFactory<NavTemplatesComponent> = this.cfr.resolveComponentFactory<NavTemplatesComponent>(NavTemplatesComponent);
+    const cfr: ComponentFactory<CarouselTemplatesComponent> = this.cfr.resolveComponentFactory<CarouselTemplatesComponent>(CarouselTemplatesComponent);
     const navigationCompRef = cfr.create(this.injector);
     this.renderTemplate(navigationCompRef);
   }
@@ -29,7 +29,7 @@ export class NavigationDirective implements OnInit {
     alert('prev');
 
   }
-  private renderTemplate(templateComp: ComponentRef<NavTemplatesComponent>) {
+  private renderTemplate(templateComp: ComponentRef<CarouselTemplatesComponent>) {
     switch (this.oaNavigation) {
       case NavigationTypes.WORDS:
         this.viewContainer.createEmbeddedView(templateComp.instance.wordsNavigation,

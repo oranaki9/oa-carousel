@@ -1,1 +1,7 @@
-<oa-carousel  [images]="images" [autoPlay]="false" [startAt]="-1"[slides]="true"></oa-carousel>
+<oa-carousel (onNextClicked)="onNext($event)"(onPrevClicked)="onPrev($event)" [items]="images" [autoPlay]="false" [startAt]="1" [sliders]="true">
+   
+   <!-- <ng-template oaCustomCarousel let-name >
+        <div> {{name}} </div>
+      </ng-template>  -->
+
+</oa-carousel>

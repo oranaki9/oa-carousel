@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavTemplatesComponent } from './nav-templates.component';
+import { CarouselTemplatesComponent } from './carousel-templates.component';
 
 describe('NavTemplatesComponent', () => {
-  let component: NavTemplatesComponent;
-  let fixture: ComponentFixture<NavTemplatesComponent>;
+  let component: CarouselTemplatesComponent;
+  let fixture: ComponentFixture<CarouselTemplatesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavTemplatesComponent ]
+      declarations: [ CarouselTemplatesComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavTemplatesComponent);
+    fixture = TestBed.createComponent(CarouselTemplatesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

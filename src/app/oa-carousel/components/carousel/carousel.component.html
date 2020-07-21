@@ -1,22 +1,18 @@
 <div class="carousel-container" #carouselContainer>
-  <ng-container>
-    <img class="carousel-item" [src]="images[index]" #carouselItem>
-  </ng-container>
+ 
 
-  <!-- <ng-container *oaCarousel="let item of images">
-    <div class="carousel-controllers">
-      <div (click)="prev()">
-        prev
-      </div>
-      <div (click)="next()">
-        next
-      </div>
-    </div>
+  <div class="carousel-items-container">
+
+    <ng-container *oaCarousel="let item of items;index index;tmpl customeCarouselTemplate">
+      <ng-content>
+      </ng-content>
+    </ng-container>
+  </div>
+
+  <!-- <ng-container *oaNavigation="'WORDS'">
   </ng-container>
-  <ng-container *oaNavigation="'WORDS'">
-  </ng-container> -->
   <ng-container *oaNavigation="'PRIMARY_ARROWS'">
-  </ng-container> 
+  </ng-container>  -->
   <div class="carousel-controllers">
     <div (click)="prev()">
       prev
@@ -26,7 +22,7 @@
     </div>
   </div>
 
-  <div class="carousel-indicators" *ngIf="_slides">
+  <div class="carousel-indicators" *ngIf="slides">
     <span class="carousel-slide" (click)="index=i" [class.current-slide]="i===index"
       *ngFor="let slide of carouselSliders;let i=index"></span>
   </div>
