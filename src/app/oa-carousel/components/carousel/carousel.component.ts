@@ -57,7 +57,6 @@ export class CarouselComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('itemsContainer', { static: true, read: ViewContainerRef }) itemsContainer: ViewContainerRef;
 
   constructor(
-    private cd: ChangeDetectorRef,
     private renderer: Renderer2,
     private cfr: ComponentFactoryResolver,
     private injector: Injector) { }
@@ -128,7 +127,6 @@ export class CarouselComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   setIndex(index: number): void {
     this.index = index;
-    this.cd.markForCheck();
     this.renderView();
 
   }
