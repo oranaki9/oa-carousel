@@ -1,27 +1,24 @@
+import { CarouselTemplatesComponent } from './components/carousel-templates/carousel-templates.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { CommonModule } from '@angular/common';
-import { NavigationDirective } from './directives/navigation/navigation.directive';
-import { CarouselDirective } from './directives/carousel/carousel.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
-import { OaCustomCarouselDirective } from './directives/customCarousel/oa-custom-carousel.directive';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     CarouselComponent,
-    NavigationDirective,
-    CarouselDirective,
-    OaCustomCarouselDirective,
-  
+    CarouselTemplatesComponent
   ],
   imports: [
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule
   ],
   exports: [CarouselComponent],
   providers: [],

@@ -1,30 +1,14 @@
-<div class="carousel-container" #carouselContainer>
- 
+<div [style.height]="height"[style.width]="width" class="carousel-container" #carouselContainer>
+
 
   <div class="carousel-items-container">
-
-    <ng-container *oaCarousel="let item of items;index index;tmpl customeCarouselTemplate">
-      <ng-content>
-      </ng-content>
-    </ng-container>
+    <ng-container #itemsContainer></ng-container>
   </div>
 
-  <!-- <ng-container *oaNavigation="'WORDS'">
-  </ng-container>
-  <ng-container *oaNavigation="'PRIMARY_ARROWS'">
-  </ng-container>  -->
-  <div class="carousel-controllers">
-    <div (click)="prev()">
-      prev
-    </div>
-    <div (click)="next()">
-      next
-    </div>
-  </div>
-
+<!-- 
   <div class="carousel-indicators" *ngIf="slides">
     <span class="carousel-slide" (click)="index=i" [class.current-slide]="i===index"
       *ngFor="let slide of carouselSliders;let i=index"></span>
-  </div>
+  </div> -->
 
 </div>

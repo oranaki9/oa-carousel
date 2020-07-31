@@ -1,4 +1,11 @@
+@import "../../variabels.less";
 
+.navigation-container{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top:0;
+}
 .primary-arrow-wrapper {
   display: flex;
   justify-content: center;
@@ -8,13 +15,12 @@
   position: absolute;
   color: white;
   background-color: rgba(0, 0, 0, 0.3);
+  #no-select;
 
 }
-
-.slide:hover {
+.primary-arrow-wrapper:hover{
   cursor: pointer;
-}
-
+    }
 .left {
   left: 0;
 }
@@ -31,4 +37,33 @@
   width: 100%;
   height: 100%;
   flex: 1 0 100%;
+  #no-select;
+  .carousel-item:focus,
+  .carousel-item:active{
+    
+  }
+}
+
+.carousel-indicators {
+  width: @full-element-size;
+  height: 10%;
+  #center-element;
+  position: absolute;
+  bottom: 2%;
+
+  .carousel-slide {
+    background-color: @slide-color;
+    height: @slide-height;
+    width: @slide-width;
+    border-radius: 50%;
+    margin: 1px;
+  }
+
+  .carousel-slide:hover {
+    cursor: pointer;
+  }
+
+  .current-slide {
+    background-color: @slide-color-active;
+  }
 }

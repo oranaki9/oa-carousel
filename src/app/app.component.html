@@ -1,7 +1,35 @@
-<oa-carousel (onNextClicked)="onNext($event)"(onPrevClicked)="onPrev($event)" [items]="images" [autoPlay]="false" [startAt]="1" [sliders]="true">
-   
-   <!-- <ng-template oaCustomCarousel let-name >
-        <div> {{name}} </div>
-      </ng-template>  -->
-
+<oa-carousel 
+[items]="images"
+[autoPlay]="false"
+[startAt]="1"
+[sliders]="true"
+(onNextClicked)="onNext($event)"(onPrevClicked)="onPrev($event)"
+>
 </oa-carousel>
+
+<ng-template #customCarouselTemplate let-item>
+   <div> {{item}} </div>
+</ng-template> 
+
+<ng-template #wordsNavigation let-navigation>
+   <div class="carousel-controllers">
+     <div (click)="navigation.prev()">
+       prev
+     </div>
+     <div (click)="navigation.next()">
+       next
+     </div>
+   </div>
+ </ng-template> 
+ <ng-template #defaultCarouselNav let-navigation>
+   <div class="primary-arrow-wrapper left">
+     <span class="material-icons slide" (click)="navigation.prev()">
+       chevron_left
+     </span>
+   </div>
+   <div class="primary-arrow-wrapper right">
+     <span class="material-icons slide" (click)="navigation.next()">
+       chevron_right
+     </span>
+   </div>
+ </ng-template>

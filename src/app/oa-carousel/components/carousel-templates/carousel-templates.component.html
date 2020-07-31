@@ -1,26 +1,34 @@
-<ng-template #primaryArrowsNavigation let-carousel>
-  <div class="primary-arrow-wrapper left">
-    <span class="material-icons slide" (click)="carousel.prev()">
-      chevron_left
-    </span>
-  </div>
-  <div class="primary-arrow-wrapper right">
-    <span class="material-icons slide" (click)="carousel.next()">
-      chevron_right
-    </span>
+<ng-template #defaultCarouselNav let-navigation>
+  <div class="navigation-container">
+
+    <div class="primary-arrow-wrapper left" (click)="navigation.prev()">
+      <span class="material-icons">
+        chevron_left
+      </span>
+    </div>
+    <div class="primary-arrow-wrapper right" (click)="navigation.next()">
+      <span class="material-icons">
+        chevron_right
+      </span>
+    </div>
   </div>
 </ng-template>
-<ng-template #wordsNavigation let-carousel>
+<ng-template #wordsNavigation let-navigation>
   <div class="carousel-controllers">
-    <div (click)="carousel.prev()">
+    <div (click)="navigation.prev()">
       prev
     </div>
-    <div (click)="carousel.next()">
+    <div (click)="navigation.next()">
       next
     </div>
   </div>
 </ng-template>
-<ng-template #carouselItem let-image>
+<ng-template #defaultCarouselItem let-image>
   <img class="carousel-item" [src]="image">
 </ng-template>
-
+<ng-template #carouselDefaultIndicators let-array="array" let-currentIndex="index" let-setIndex="setIndex">
+  <div class="carousel-indicators" *ngIf="array?.length">
+    <span class="carousel-slide" (click)="setIndex(i)" [class.current-slide]="i===currentIndex"
+      *ngFor="let slide of array;let i=index"></span>
+  </div>
+</ng-template>
