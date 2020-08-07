@@ -1,14 +1,34 @@
-<div [style.height]="height"[style.width]="width" class="carousel-container" #carouselContainer>
-
-
+<div
+  [style.height]="height"
+  [style.width]="width"
+  class="carousel-container"
+  #carouselContainer
+>
+  
   <div class="carousel-items-container">
-    <ng-container #itemsContainer></ng-container>
+    <!--carousel item container-->
+    <ng-container
+      #itemContainer
+      [ngTemplateOutlet]="customCarouselTemplate || defaultCarousel"
+      [ngTemplateOutletContext]="{ $implicit: this.items[this.index] }"
+    >
+    </ng-container>
+    <!--carousel navigation buttons container-->
+    <ng-container
+      #navigationContainer
+      *ngIf="sliders"
+      [ngTemplateOutlet]="customCarouselNavTemplate || defaultCarouselNav"
+      [ngTemplateOutletContext]="navigationContext"
+    >
+    </ng-container>
+        <!--carousel item indicators container-->
+    <ng-container
+      #navigationCordinatorContainer
+      *ngIf="itemIndicators"
+      [ngTemplateOutlet]="customCarouselNavTemplate || defaultIndicatorsNav"
+      [ngTemplateOutletContext]="navigationIndicatorsContext"
+    >
+    </ng-container>
   </div>
-
-<!-- 
-  <div class="carousel-indicators" *ngIf="slides">
-    <span class="carousel-slide" (click)="index=i" [class.current-slide]="i===index"
-      *ngFor="let slide of carouselSliders;let i=index"></span>
-  </div> -->
 
 </div>
